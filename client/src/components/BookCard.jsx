@@ -4,19 +4,19 @@ import './styles/bookcard.css'
 export default function BookCard({id,book}) {
 
 
-    const sendEmail = (e) => {
-        e.preventDefault();
-        // emailjs.send("service_hm7hog8","template_7oy5vff",{
-        //         // book_name: `${book_name}`,
-        //         // reciever: `${reciever_mailid}`,
-        //         })
-        //         .then(function(response) {
-        //             alert("Request sent successfully");
-        //             console.log('SUCCESS!', response.status, response.text);
-        //          }, function(error) {
-        //             console.log('FAILED...', error);
-        //          });
-    };
+    // const sendEmail = (e) => {
+    //     e.preventDefault();
+    //     // emailjs.send("service_hm7hog8","template_7oy5vff",{
+    //     //         // book_name: `${book_name}`,
+    //     //         // reciever: `${reciever_mailid}`,
+    //     //         })
+    //     //         .then(function(response) {
+    //     //             alert("Request sent successfully");
+    //     //             console.log('SUCCESS!', response.status, response.text);
+    //     //          }, function(error) {
+    //     //             console.log('FAILED...', error);
+    //     //          });
+    // };
     console.log(book);
     
   return (
@@ -52,7 +52,7 @@ export default function BookCard({id,book}) {
                     <div className="details small">pincode : {book.pincode}</div>             
                 </div>
                 <p>
-                    <button class="mailsend" onClick={sendEmail}> <a href="#"  className="mail">Request Book</a></button>
+                    {/* <button class="mailsend" onClick={sendEmail}> <a href="#"  className="mail">Request Book</a></button> */}
                 </p>
                 <p>
                 <button class="cntbtn">
