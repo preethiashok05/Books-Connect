@@ -5,7 +5,6 @@ import './styles/form.css'
 import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
 import { host } from "../utils/apiRoutes";
-import TextScroller from './TextScroller';
 
 function Form() {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ function Form() {
       navigate('/signin');
     }
     setFormData({ ...formData, email:user_email });
-  }, [formData.email]);
+  }, [formData.email]);// eslint-disable-line react-hooks/exhaustive-deps
 
   
   const formSubmit = async () =>{
@@ -92,7 +91,7 @@ function Form() {
           </div>
         
         <div className="footer">
-          <button disabled={page == 0}  onClick={() => {setPage((currPage) => currPage - 1);}}> Prev  </button>
+          <button disabled={page === 0}  onClick={() => {setPage((currPage) => currPage - 1);}}> Prev  </button>
           <button
           onClick={(e) => {
             if (page === FormTitles.length - 1) {

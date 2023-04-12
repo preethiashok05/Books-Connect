@@ -1,11 +1,11 @@
 import React from 'react'
 import './home.css'
-import { Link } from 'react-router-dom'
 import { grades , fields} from '../../utils/booksData';
-import Navbar from '../../components/Navbar';
+
 import Banner from '../../components/Banner';
 import Footer from '../../components/Footer';
 import img1 from '../../utils/pics/book.jpeg';
+import TextScroller from '../../components/TextScroller';
 
 export default function Home() {
   
@@ -18,6 +18,7 @@ export default function Home() {
      <div className="home_sweet_home">
      <section className="banner">
         <Banner img={img1} />
+        <TextScroller text={'Find free text-books / guides of any domain '} />
       </section>
       <section className="find_books" >
         <div className="dntbtn">Find Books</div>

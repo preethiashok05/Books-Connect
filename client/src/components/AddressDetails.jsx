@@ -10,7 +10,7 @@ function AddressDetails({ formData, setFormData }) {
     return;
   }
   setFormData({ ...formData, lat: location?.coordinates.lat , lng: location?.coordinates.lng });
- }, [location]);
+ }, [location]);// eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="user-details-container">

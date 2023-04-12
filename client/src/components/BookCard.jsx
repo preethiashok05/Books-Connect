@@ -24,7 +24,7 @@ export default function BookCard({id,book}) {
        <div className="flip-card">
             <div className="flip-card-inner">
                 <div className="flip-card-front">
-                <img src={require(`../images/${book.image}`)} alt="book-image" style={{maxWidth :"250px" , height :"300px"  }}/>
+                <img src={require(`../images/${book.image}`)} alt={`${book.bookname}`} style={{maxWidth :"250px" , height :"300px"  }}/>
                 <div className="book_details">
                     <div className="book_name">Book name : {book.bookname}</div>
                     <div className="author">Author : {book.author}</div>
@@ -41,7 +41,7 @@ export default function BookCard({id,book}) {
                 
                 <div className="bla">Book Pickup Address :</div>
                 <div className="pickup">
-                <a className='link' href={`https://waze.com/ul?ll=${book.lat},${book.lng}&navigate=yes`} target="_blank">
+                <a className='link' href={`https://waze.com/ul?ll=${book.lat},${book.lng}&navigate=yes`} target="_blank" rel = 'noreferrer'>
                     Open Address in Waze </a>
                     <div className='details small'>destination address :</div>
                     <div className=" details small" id="clipboard">{book.lat} , {book.lng} </div>
@@ -56,7 +56,7 @@ export default function BookCard({id,book}) {
                 </p>
                 <p>
                 <button class="cntbtn">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=preethiashok05@gmail.com" target="_blank" className="mail">Contact</a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=preethiashok05@gmail.com" target="_blank" rel='noreferrer' className="mail">Contact</a>
                     </button></p>
                 </div>
             </div>

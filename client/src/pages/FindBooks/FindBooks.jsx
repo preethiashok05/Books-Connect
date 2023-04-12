@@ -91,7 +91,7 @@ export default function FindBooks() {
             })
         }
         return () => {mount = false};
-    }, [field , subject,filter ,order ]);
+    }, [field , subject,filter ,order ,items]);// eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if(nearest && items ){
@@ -101,7 +101,7 @@ export default function FindBooks() {
             const sorted = items.sort((a, b) =>  relativeHaversineDistance(a.lat, a.lng, points.lat,points.lng ) > relativeHaversineDistance(b.lat, b.lng, points.lat , points.lng)?-1:1)
             setitems(sorted);
         }
-    }, [nearest]);
+    }, [nearest]);// eslint-disable-line react-hooks/exhaustive-deps
     
   return (
    <>

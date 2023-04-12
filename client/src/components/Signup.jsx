@@ -16,7 +16,7 @@ export default function Signup() {
   }
   const [formData, setFormData] = useState(initialdata);
   
-  const sendEmail = () => {
+  //const sendEmail = () => {
     // emailjs.send("service_hm7hog8","template_7oy5vff",{
     //         // book_name: `${book_name}`,
     //         // reciever: `${reciever_mailid}`,
@@ -27,7 +27,7 @@ export default function Signup() {
     //          }, function(error) {
     //             console.log('FAILED...', error);
     //          });
-  };
+  //};
 
   const handleSubmit = async (e) => {
     e.preventDefault();

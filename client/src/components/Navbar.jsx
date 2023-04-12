@@ -1,6 +1,5 @@
 import React , {useState , useEffect} from 'react'
 import './styles/navbar.css'
-import logo  from "../utils/pics/girl_kids_logo.jpeg";
 
 export default function Navbar() {
 
