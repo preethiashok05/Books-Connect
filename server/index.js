@@ -32,12 +32,10 @@ const storage = multer.diskStorage({
 
 //Database connection
 const db = mysql.createConnection({
-  // user: process.env.DBUSER,
-  // password: process.env.DBPSWRD,
-  host:'localhost',
-  user:'root',
-  password:'',
-  database:'books_connect'
+  user: process.env.DBUSER,
+  password: process.env.DBPSWRD,
+  host:process.env.HOST,
+  database:process.env.DB
 });
 db.connect( (err) => {
   if(err){
