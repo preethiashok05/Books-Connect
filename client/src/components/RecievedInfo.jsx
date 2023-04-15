@@ -5,13 +5,13 @@ import success from '../utils/pics/book.jpeg'
 import { host } from '../utils/apiRoutes';
 
 export default function RecievedInfo() {
-    const [collected, setcollected] = useState(true);
+    const [collected, setcollected] = useState('COLLECTED ? YES/NO');
     const param = useParams();
     const navigate = useNavigate();
 
     const handleChange = async (e) => {
         e.preventDefault();
-        const flag = (e.target.value === 'Reciever collected the book successfully')?true:false;
+        const flag = (e.target.value === "YES")?true:false;
         setcollected(flag);
 
         try {
@@ -36,12 +36,19 @@ export default function RecievedInfo() {
     <div className='v_container'>
     <img src={success} height= '150px' width = '300px' alt="success_img" className='book_img' />
         <h3 className='center_text'>Thankyou for your time , we hope the book reached the reciever safely . Let us know !!</h3>
-        <div className="flex">
-            <button id="yes" onClick={handleChange} className='green_btn'>Reciever collected the book successfully </button>
-            <label htmlFor="yes">*We will delete the book from our database if book is collected</label>
-            <button onClick={handleChange} className='green_btn'>Did not collect the book</button>
+        <div className="dropdown">
+            <button className="dropbtn">{collected}
+                <i className="fa fa-caret-down"></i>
+            </button>
+            <select name="field" className="dropdown-content"  onChange={(e) => { setcollected(e.target.value);} }> 
+            <option>Select</option>
+            <option>YES</option>
+            <option>NO</option>
+            </select>
         </div>
+        <button  onClick={handleChange} className='green_btn'>Submit</button>
 	</div>
+
    </>
   )
 }
