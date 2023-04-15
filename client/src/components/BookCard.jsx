@@ -19,7 +19,7 @@ export default function BookCard({id,book}) {
         setreq(true);
         let r_url = `${clienthost}/recievedinfo/${book.id}/${r_mail}`;
         let o_url = `${clienthost}/opinion/${book.id}/${r_mail}`;
-        console.log(r_url);
+       
         console.log(o_url);
 
         e.preventDefault();
@@ -36,8 +36,8 @@ export default function BookCard({id,book}) {
             r_name : `${r_name}`,
             r_mail : `${r_mail}`,
             city : `${book.city}`,
-            opinion :`${o_url}`,
-            rcvd_info :`${r_url}`, 
+            o_url :`${o_url}`,
+            r_url :`${r_url}`, 
             details : `${book.detail}`,
             pincode : `${book.pincode}`
         } , "3rgEG2b-fIFbhlRd1")
