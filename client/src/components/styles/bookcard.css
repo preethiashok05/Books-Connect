@@ -8,7 +8,23 @@
   -ms-transform: translate(-50%, -50%);
   text-align: center;
 }
+.loading{
+  position: absolute;
+  opacity: 1;
+ height: 100%;
+  width: 100%;
+  background-color: #101110ab;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  transition: .5s ease;
+}
 
+.innertext{
+ padding: 5rem 0;
+ font-size: large;
+ font-weight: bold;
+}
 .center_text{
   text-align: center;
 }

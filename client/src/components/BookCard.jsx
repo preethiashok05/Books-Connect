@@ -12,21 +12,22 @@ export default function BookCard({id,book}) {
     const [message, setmessage] = useState("");
     const [r_name, setr_name] = useState("");
     const [r_mail, setr_mail] = useState("");
+    const [req, setreq] = useState(false);
     const navigate = useNavigate();
     
     const sendEmail = (e) => {
+        setreq(true);
         let r_url = `${clienthost}/recievedinfo/${book.id}/${r_mail}`;
         let o_url = `${clienthost}/opinion/${book.id}/${r_mail}`;
         console.log(r_url);
         console.log(o_url);
 
         e.preventDefault();
-        if(startDate === "" || r_name == ""){
+        if(startDate === "" || r_name === ""){
             alert("Pickup date or Reciever name not mentioned. kindly fill it and try again");
             return;
         }
-        alert('Loading ... ');
-        off();
+        
         emailjs.send("service_l9bfzmq", "template_2y4vvn9",{
             book_name: `${book.bookname}`,
             donor: `${book.email}`,
@@ -41,6 +42,11 @@ export default function BookCard({id,book}) {
             pincode : `${book.pincode}`
         } , "3rgEG2b-fIFbhlRd1")
         .then(function(response) {
+            setreq(false);
+              off();
+        setr_mail('');
+        setStartDate('');
+        setmessage('');
             alert("Request sent successfully ,You will recieve a mail once donor approves/rejects the request. Keep Reading Books !! ");
             console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
@@ -48,9 +54,7 @@ export default function BookCard({id,book}) {
             console.log('FAILED...', error);
         });
 
-        setr_mail('');
-        setStartDate('');
-        setmessage('');
+        
     };
     
     useEffect(() => {
@@ -61,6 +65,7 @@ export default function BookCard({id,book}) {
         document.getElementById(`contact${book.id}`).style.cursor = 'none';
         document.getElementById(`down${book.id}`).style.opacity = 1;
        }
+     
     }, [book.down]);
 
     function on() {
@@ -70,6 +75,7 @@ export default function BookCard({id,book}) {
         navigate('/signin');
         }
         document.getElementById(`overlay${book.id}`).style.display = "block";
+
       }
     function off() {
     document.getElementById(`overlay${book.id}`).style.display = "none";
@@ -92,6 +98,7 @@ export default function BookCard({id,book}) {
                 </div>
 
                 <div className="flip-card-back" id={`flip-card-back${book.id}`}>
+                
                     <p className='dnrdtls' >DONOR DETAILS</p>
                     <div className="donorinfo">
                         <div className="capitalise">{book.firstname} {book.lastname}</div>
@@ -112,10 +119,11 @@ export default function BookCard({id,book}) {
                         <div className="details small">pincode : {book.pincode}</div>             
                     </div>
                     <button class="cntbtn" id={`contact${book.id}`}  onClick={on}>Contact Donor</button>
-                    {/* <a href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${book.email}`} target="_blank" rel='noreferrer' className="mail">Contact Donnor</a> */}
+                  
             
                     <div id={`overlay${book.id}`} className='overlay'>
-                            <form id = "form-box" onSubmit={sendEmail} >
+                    {req && <div id={`loading${book.id}`} className='loading'> <p className='innertext'>Loading.... </p></div>}
+                            <form id = 'form-box' onSubmit={sendEmail} >
                             <DatePicker
                                     selected={startDate} 
                                     onChange={(date) => setStartDate(date)}

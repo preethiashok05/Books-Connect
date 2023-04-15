@@ -47,7 +47,7 @@ export default function Signin() {
         })
         .catch(error => {
             console.log(error);
-            alert('some error occured , try again!');
+            alert(error);
             return;
         });
     }
