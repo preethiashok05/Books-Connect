@@ -13,7 +13,7 @@ export default function Footer() {
 
                     <ul className="footer__links">
                         <li>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=books4connect@gmail.com" target="_blank" rel='noreferrer' className="footer__link">Contact Us</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=books4connect@gmail.com" target="_blank" rel='noreferrer' className="footer__link">Contact Us</a> : books4connect@gmail.com
                         </li>
                         <li>
                             <a href="/about" className="footer__link">About</a>
