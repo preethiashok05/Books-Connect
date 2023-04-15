@@ -27,26 +27,26 @@ export default function BookCard({id,book}) {
         }
         alert('Loading ... ');
         off();
-        // emailjs.send("service_l9bfzmq", "template_2y4vvn9",{
-        //     book_name: `${book.bookname}`,
-        //     donor: `${book.email}`,
-        //     date : `${startDate}`,
-        //     message : `${message}`,
-        //     r_name : `${r_name}`,
-        //     r_mail : `${r_mail}`,
-        //     city : `${book.city}`,
-        //     opinion :`${o_url}`,
-        //     rcvd_info :`${r_url}`, 
-        //     details : `${book.detail}`,
-        //     pincode : `${book.pincode}`
-        // } , "3rgEG2b-fIFbhlRd1")
-        // .then(function(response) {
-        //     alert("Request sent successfully ,You will recieve a mail once donor approves/rejects the request. Keep Reading Books !! ");
-        //     console.log('SUCCESS!', response.status, response.text);
-        //     }, function(error) {
-        //     alert("Request failed , try some other time.")
-        //     console.log('FAILED...', error);
-        // });
+        emailjs.send("service_l9bfzmq", "template_2y4vvn9",{
+            book_name: `${book.bookname}`,
+            donor: `${book.email}`,
+            date : `${startDate}`,
+            message : `${message}`,
+            r_name : `${r_name}`,
+            r_mail : `${r_mail}`,
+            city : `${book.city}`,
+            opinion :`${o_url}`,
+            rcvd_info :`${r_url}`, 
+            details : `${book.detail}`,
+            pincode : `${book.pincode}`
+        } , "3rgEG2b-fIFbhlRd1")
+        .then(function(response) {
+            alert("Request sent successfully ,You will recieve a mail once donor approves/rejects the request. Keep Reading Books !! ");
+            console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+            alert("Request failed , try some other time.")
+            console.log('FAILED...', error);
+        });
 
         setr_mail('');
         setStartDate('');

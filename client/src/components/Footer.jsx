@@ -1,9 +1,10 @@
 import React from 'react'
 import './styles/footer.css'
+
 export default function Footer() {
   return (
     <>
-         <footer className="footer_">
+        <footer className="footer_">
             <div className="footer__bg">
                 <div className="footer__container">
                     <div>
