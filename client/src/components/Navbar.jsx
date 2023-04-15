@@ -12,11 +12,10 @@ export default function Navbar() {
           x.className = "topnav";
         }
       }
-
       useEffect(() => {
         const donoremail = localStorage.getItem('books_connect_email');
         setemail(donoremail);
-      }, []);
+      }, [email]);
 
       const Logout = () =>{
         setemail("");
@@ -26,7 +25,7 @@ export default function Navbar() {
    <>
    <div className="topnav" id="myTopnav">
    <span className='logotitle'>BOOKS CONNECT</span>
-    {/* <img src={logo} className='logo' height='45px' width='45px'  alt="logo"/> */}
+
     <a href="/" >Home</a>
     <a href="/donate">Donate Books</a>
     {email ? <a href="javascript:void(0);" onClick={Logout}>Logout</a> : <a href="/signup">SignUp / SignIn</a>}

@@ -36,19 +36,26 @@ export default function Signin() {
               localStorage.setItem('books_connect_email',formData.email);
               navigate('/')
             }else if(response.status === 500){
-              console.log('server error')
+              alert(response.data.message);
+              console.log('server error');
+              return;
             }else{
               console.log(response.data.message);
+              alert(response.data.message);
+              return;
             }
         })
         .catch(error => {
             console.log(error);
+            alert('some error occured , try again!');
+            return;
         });
     }
   return (
     <>
     <div className="signin_container" >
-
+      <h1>Sign In</h1>
+      <hr/>
       <label htmlFor="email"><b>Enter Email</b></label>
       <input type="text" placeholder="Enter Enter Email" name="email" value={formData.email}
         onChange={(e) => {

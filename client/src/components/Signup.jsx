@@ -16,18 +16,6 @@ export default function Signup() {
   }
   const [formData, setFormData] = useState(initialdata);
   
-  //const sendEmail = () => {
-    // emailjs.send("service_hm7hog8","template_7oy5vff",{
-    //         // book_name: `${book_name}`,
-    //         // reciever: `${reciever_mailid}`,
-    //         })
-    //         .then(function(response) {
-    //             alert("Request sent successfully");
-    //             console.log('SUCCESS!', response.status, response.text);
-    //          }, function(error) {
-    //             console.log('FAILED...', error);
-    //          });
-  //};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,11 +34,15 @@ export default function Signup() {
     
     axios.post(`${host}/post/signup`, data, config)
     .then(response => {
-        console.log(response);
-        navigate('/')
+
+        alert(response.data['message']);
+        navigate('/');
+        return;
     })
     .catch(error => {
         console.log(error);
+        alert('some error occured , try again!');
+        return;
     });
   }
   return (

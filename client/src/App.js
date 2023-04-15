@@ -5,7 +5,9 @@ import FindBooks from "./pages/FindBooks/FindBooks";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import About from "./pages/About/About";
-
+import EmailVerify from "./components/EmailVerify";
+import RecievedInfo from "./components/RecievedInfo";
+import Opinion from "./components/Opinion";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
       <Route path="/books/:fields/:subfields" element={<FindBooks />} />
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/signin" element={<Signin/>}/>
+      <Route path="/opinion/:book_id/:r_mail" element={<Opinion/>}/>
+      <Route path="/recievedinfo/:book_id/:r_mail" element={<RecievedInfo/>}/>
+      <Route path="/users/:email/verify/:token" element={<EmailVerify />} />
     </Routes>
   </BrowserRouter>
   );

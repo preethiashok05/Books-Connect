@@ -1,7 +1,34 @@
+.down{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.center_text{
+  text-align: center;
+}
+.downtext{
+  background-color: #f51313;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.flex{
+  display: flex;
+  gap: 1rem;
+}
+
+
 .flip-card {
     background-color: transparent;
     width: 275px;
-    height: 350px;
+    height: 400px;
     perspective: 1000px;
   }
   
@@ -64,10 +91,7 @@
     color: aliceblue;
   }
   
-  .cntbtn:hover {
-    background-color: #555;
-    color: aliceblue;
-  }
+  
   .book_details{
     position: absolute;
     bottom: 0;
@@ -109,7 +133,6 @@
   .capitalise{
     text-transform: capitalize;
     font-size: medium;
-    font-weight: 800;
   }
   .nearbtn{
     background-color: #f902dd;
@@ -129,6 +152,7 @@
     color: white;
     font-size: small;
     font-weight: 800;
+    padding: 2px;
   }
 
   .pickup{
@@ -141,10 +165,12 @@
     align-self: center;
     margin: auto;
     color: black;
+    padding: 5px;
   }
 
   .donorinfo{
-    padding-bottom: 10px;
+    padding: 10px;
+    color: rgb(226, 86, 43);
   }
 .bla{
   padding-bottom:3px;
@@ -167,3 +193,38 @@
   color: rgb(76, 49, 155);
   text-decoration: underline;
 }
+
+
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(250, 239, 239, 0.951); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.btn{
+  height:max-content;
+  padding: 5px;
+  width: 48%;
+  cursor: pointer;
+
+}
+
+.btns{
+  background-color: violet;
+  height: 30px;
+  text-align: center;
+  padding-top: 4px;
+  cursor: pointer;
+  width: 48%;
+  color: white;
+  margin: auto;
+}
+

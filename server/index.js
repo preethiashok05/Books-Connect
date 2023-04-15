@@ -32,11 +32,17 @@ const storage = multer.diskStorage({
 
 //Database connection
 const db = mysql.createConnection({
-  user: process.env.DBUSER,
-  password: process.env.DBPSWRD,
-  host:process.env.HOST,
-  database:process.env.DB
+  // user: process.env.DBUSER,
+  // password: process.env.DBPSWRD,
+  // host:process.env.HOST,
+  // database:process.env.DB
+  user:'sql12612831',
+  password:'HNrR8y8xK8',
+  host:'sql12.freemysqlhosting.net',
+  database:'sql12612831'
 });
+
+
 db.connect( (err) => {
   if(err){
       throw err;
@@ -45,14 +51,6 @@ db.connect( (err) => {
 });
 
 global.db = db;
-
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-// mongoose.connection.once('open', () => {
-//   console.log('MongoDB database connection established successfully');
-// });
 
 // Routes
 

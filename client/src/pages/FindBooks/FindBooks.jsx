@@ -1,4 +1,4 @@
-import React ,{useState , useEffect} from 'react'
+import React ,{useState , useEffect , useMemo, useCallback} from 'react'
 import { medMajor , engSubjects } from '../../utils/booksData';
 import { ParaClinical , PreClinical , Clinical , Dentistry  , schoolSubjects} from '../../utils/booksData';
 import { host } from '../../utils/apiRoutes'
@@ -6,13 +6,16 @@ import axios from 'axios';
 import BookCard from '../../components/BookCard';
 import useGeolocation from "../../hooks/useGeolocation";
 
+
 import './styles.css'
 
 export default function FindBooks() {
+    const [cnt, setcnt] = useState(0);
     const [items, setitems] = useState([]);
     const [nearest, setnearest] = useState(false);
     const [order, setorder] = useState("Select Order");
     const [filter, setfilter] = useState('Sort By');
+    const [cache, setcache] = useState({});
     const [points, setpoints] = useState({
         lat:'',
         lng:''
@@ -25,15 +28,12 @@ export default function FindBooks() {
     const subcategory = path[3];
 
     function relativeHaversineDistance(lattitude1, longittude1,lattitude2,longittude2) {
-        console.log('hello')
         const toRadian = n => (n * Math.PI) / 180
         
             let lat2 = lattitude2
             let lon2 = longittude2
             let lat1 = lattitude1
             let lon1 = longittude1
-        
-            console.log(lat1, lon1+"==="+lat2, lon2)
             let R = 6371  // km
             let x1 = lat2 - lat1
             let dLat = toRadian(x1)
@@ -44,10 +44,8 @@ export default function FindBooks() {
               Math.cos(toRadian(lat1)) * Math.cos(toRadian(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
             let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
             let d = R * c
-            console.log("distance==?",d)
+
             return d 
-    
-       
         }
 
     let field_options = null;
@@ -72,26 +70,28 @@ export default function FindBooks() {
     }
 
     useEffect( () => {
+        console.log('useeffect')
         var mount = true;
         if(mount === true)
         { 
             setpoints({lat: location?.coordinates.lat , lng: location?.coordinates.lng});
-            let flag1 = (filter === 'Sort By')?"no":filter;
-            let flag2 = (flag1 === "no")?"no":((order === "Select Order" || order === "ASC")?"ASC":"DESC");   
-            let flag3 = (field === "Select Field")?"no":field;
-            let flag4 = (subject === "Select Subject")?"no":subject;
 
-            axios.get(`${host}/get/book/${category}/${subcategory}/${flag3}/${flag4}/${flag1}/${flag2}`)
+            let filter_option = (filter === 'Sort By')?"no":filter;
+            let order_option = (filter_option === "no")?"no":((order === "Select Order" || order === "ASC")?"ASC":"DESC");   
+            let field_option = (field === "Select Field")?"no":field;
+            let subject_option = (subject === "Select Subject")?"no":subject;
+
+            axios.get(`${host}/get/book/${category}/${subcategory}/${field_option}/${subject_option}/${filter_option}/${order_option}`)
             .then(response => {
-              console.log(response.data.record);
-              setitems(response.data.record);
+                setitems(response.data.record);
+                console.log(cache);
             })
             .catch(error => {
                 console.log(error);
             })
         }
         return () => {mount = false};
-    }, [field , subject,filter ,order ,items]);// eslint-disable-line react-hooks/exhaustive-deps
+    }, [subject , filter , filter , order]);
 
     useEffect(() => {
         if(nearest && items ){
@@ -111,7 +111,7 @@ export default function FindBooks() {
                     <button className="dropbtn">{filter}
                         <i className="fa fa-caret-down"></i>
                     </button>
-                    <select name="field" className="dropdown-content"  onChange={(e) => setfilter(e.target.value)}> 
+                    <select name="field" className="dropdown-content"  onChange={(e) => { setfilter(e.target.value);} }> 
                     <option>Sort By</option>
                     <option>author</option>
                     <option>bookname</option>
@@ -129,7 +129,7 @@ export default function FindBooks() {
                 </div>      
                 <div className="dropdown">
                 <div className="nearby">
-                <button className={`nearbtn_${nearest}`}  onClick={() => { setnearest(!nearest); }} >Nearest Donor  </button>
+                <button className={`nearbtn_${nearest}`}  onClick={() => { setnearest(!nearest); }} >Sort by Nearest Donor  </button>
                 </div>
                 </div>
                 <div className="college_menu">
@@ -175,7 +175,7 @@ export default function FindBooks() {
         {items && items.map((book) => {
                 return( <BookCard key={book.id} book = {book} /> )
         })}
-        {items.length === 0 && <div>No books found</div>}
+        {items?.length === 0 && <div>No books found</div>}
         </div>
    </div>
    </>
