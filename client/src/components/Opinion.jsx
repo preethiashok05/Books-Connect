@@ -35,7 +35,7 @@ export default function Opinion() {
   return (
    <>
     <div className='v_container'>
-        {req && <div style={{width:'200px' , height:'50px' , backgroundColor:'yellowgreen'}} >Loading ...</div>}
+        {req && <div style={{width:'200px' , height:'50px' , textAlign:'center', backgroundColor:'yellowgreen'}} >Loading ...</div>}
         <img src={success} height= '150px' width = '300px' alt="success_img" className='book_img' />
         <h2 className='center_text'>Select your opinion </h2>
         <div className="dropdown">
