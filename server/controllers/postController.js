@@ -68,7 +68,7 @@ exports.signup = async (req, res) => {
         console.log(result3);
             const salt = await bcrypt.genSalt(10);
             const hashPassword = await bcrypt.hash(password, salt);
-        const url = `http://localhost:3000/users/${email}/verify/${token}`
+        const url = `https://books-connect.netlify.app/users/${email}/verify/${token}`
         const result = await sendmail(email ,'follow the link to veryfy your account ' + url ); 
         console.log(result);
         console.log('sent')
