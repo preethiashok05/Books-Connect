@@ -17,7 +17,7 @@ export default function RecievedInfo() {
         try {
             const url = `${host}/delete/recieved/${param.book_id}/${collected}/${param.r_mail}`;
             const { data } = await axios.delete(url);
-            if(collected){
+            if(collected === "YES"){
                 alert('Great job.Keep donating and inspiring your fellow learners.')
                 navigate('/');
                 return;

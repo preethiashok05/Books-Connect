@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+
   const navigate = useNavigate();
   const initialdata = {
     firstName:'',
@@ -15,11 +16,12 @@ export default function Signup() {
     confirmP:''
   }
   const [formData, setFormData] = useState(initialdata);
+  const [req, setreq] = useState(false);
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setreq(true)
     const config = {     
       headers: { 'content-type': 'application/json' }
     }
@@ -34,12 +36,13 @@ export default function Signup() {
     
     axios.post(`${host}/post/signup`, data, config)
     .then(response => {
-
         alert(response.data['message']);
+        setreq(false);
         navigate('/');
         return;
     })
     .catch(error => {
+      setreq(false);
         console.log(error);
         alert('some error occured , try again!');
         return;
@@ -51,6 +54,7 @@ export default function Signup() {
     <form className="signup_container" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
+        {req && <div style={{padding:'5rem'}}>LOADING .....</div>}
         <hr/>
         <label htmlFor="firstname"><b>First Name</b></label>
         <input type="text" maxLength={60} placeholder="Enter first name" name="firstname"  value={formData.firstName}

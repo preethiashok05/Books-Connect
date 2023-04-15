@@ -44,9 +44,9 @@ export default function BookCard({id,book}) {
         .then(function(response) {
             setreq(false);
               off();
-        setr_mail('');
-        setStartDate('');
-        setmessage('');
+            setr_mail('');
+            setStartDate('');
+            setmessage('');
             alert("Request sent successfully ,You will recieve a mail once donor approves/rejects the request. Keep Reading Books !! ");
             console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
