@@ -2,6 +2,14 @@
     margin: 2rem;
     text-align: center;
 }
+.courtesy{
+    margin-top: 0;
+    position: absolute;
+    top: 3rem;
+    color: white;
+    padding: 2px;
+
+}
 
 .donor_rules{
     color: brown;

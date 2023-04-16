@@ -8,6 +8,7 @@ export default function About() {
    <>
     <section className="banner">
         <Banner img={donating}/>
+        <p className='courtesy small'>Image courtesy Andrice Arp , Bookmooch.com</p>
       </section>
       <section className='about_container'>
         <div className="about_title">Our Story</div>
