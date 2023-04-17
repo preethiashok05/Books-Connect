@@ -8,8 +8,8 @@ const sendmail = async (email , text) => {
             secure:false,
             port: 587,
             auth: {
-            user: 'books4connect@gmail.com',
-            pass:'tjouhguyvjijjuyb',
+            user: process.env.EMAIL,
+            pass: process.env.EMAILPASSWORD,
             },
         });
         let info = await transporter.sendMail({
