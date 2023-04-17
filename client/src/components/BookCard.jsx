@@ -28,7 +28,7 @@ export default function BookCard({id,book}) {
             return;
         }
         
-        emailjs.send( process.env.SERVICEID , process.env.TEMPLATEID,{
+        emailjs.send( 'service_l9bfzmq' , 'template_2y4vvn9',{
             book_name: `${book.bookname}`,
             donor: `${book.email}`,
             date : `${startDate}`,
@@ -40,7 +40,7 @@ export default function BookCard({id,book}) {
             r_url :`${r_url}`, 
             details : `${book.detail}`,
             pincode : `${book.pincode}`
-        } , process.env.PUBLICKEY)
+        } , '3rgEG2b-fIFbhlRd1')
         .then(function(response) {
             setreq(false);
               off();
