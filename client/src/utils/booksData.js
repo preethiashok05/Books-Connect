@@ -10,7 +10,7 @@ export const grades = [
     "Compititive Exams" ,
     "Other"
   ];
-export const  fields = ["select course" ,"Engineering" ,  "Management" , "Medical" , "Arts & Science","Commerce" , "Law" ,"Other"]
+export const  fields = ["Engineering" ,  "Management" , "Medical" , "Arts & Science","Commerce" , "Law" ,"Other"]
 
 export const medMajor = ["PreClinical" , "ParaClinical" , "Clinical" , "Dentistry" , "Other" ]
 
