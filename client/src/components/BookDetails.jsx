@@ -92,6 +92,7 @@ export default function BookDetails({ formData, setFormData }) {
               <i class="fa fa-caret-down"></i>
             </button>
             <select name="subcategory" className="dropdown-content"  onChange={subCategoryChoiceHandler}> 
+               <option>select sub-category</option>
                 {subcategory_options}
             </select>
       </div> }
@@ -101,6 +102,7 @@ export default function BookDetails({ formData, setFormData }) {
               <i class="fa fa-caret-down"></i>
             </button>
             <select name="field" className="dropdown-content"  onChange={fieldChoiceHandler}> 
+               <option>select field</option>
                 {field_options}
             </select>
       </div> }
@@ -110,7 +112,7 @@ export default function BookDetails({ formData, setFormData }) {
               <i class="fa fa-caret-down"></i>
             </button>
             <select name="field" className="dropdown-content"  onChange={subjectChoiceHandler}> 
-              <option>select sublect</option>
+              <option>select subject</option>
                 {subject_options}
             </select>
       </div>}
