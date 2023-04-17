@@ -12,12 +12,12 @@ const sendmail = async (email , text) => {
             secure:false,
             port: 587,
             auth: {
-            user: 'books4connect@gmail.com',
-            pass:'tjouhguyvjijjuyb',
+            user: process.env.EMAIL,
+            pass:process.env.EMAILPASSWORD,
             },
         });
         let info = await transporter.sendMail({
-        from: 'books4connect@gmail.com',
+        from: process.env.EMAIL,
         to: email,
         subject: 'Verify email',
         text: text,
