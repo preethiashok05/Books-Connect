@@ -25,6 +25,7 @@ export default function BookCard({id,book}) {
         e.preventDefault();
         if(startDate === "" || r_name === ""){
             alert("Pickup date or Reciever name not mentioned. kindly fill it and try again");
+            setreq(false);
             return;
         }
         
@@ -50,6 +51,7 @@ export default function BookCard({id,book}) {
             alert("Request sent successfully ,You will recieve a mail once donor approves/rejects the request. Keep Reading Books !! ");
             console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
+            setreq(false);
             alert("Request failed , try some other time.")
             console.log('FAILED...', error);
         });
