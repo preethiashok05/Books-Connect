@@ -73,7 +73,7 @@ exports.signup = async (req, res) => {
              const result = await sendmail(email ,'follow the link to veryfy your account ' + url ); 
             console.log(result);
             console.log('sent')
-            return res.status(200).json({message:result});
+           
         }catch(err){
             console.log(err);
             return res.status(400).json({message : 'server error , try again later'})
