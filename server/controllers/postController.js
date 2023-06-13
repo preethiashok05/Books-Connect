@@ -69,9 +69,15 @@ exports.signup = async (req, res) => {
             const salt = await bcrypt.genSalt(10);
             const hashPassword = await bcrypt.hash(password, salt);
         const url = `https://books-connect.netlify.app/users/${email}/verify/${token}`
-        const result = await sendmail(email ,'follow the link to veryfy your account ' + url ); 
-        console.log(result);
-        console.log('sent')
+        try{
+             const result = await sendmail(email ,'follow the link to veryfy your account ' + url ); 
+            console.log(result);
+            console.log('sent')
+        }catch(err){
+            console.log(err);
+            return res.status(400).json({message : 'server error , try again later'})
+        }
+       
         return res.status(200).json({message:'check your account to verify your email address.'});
         })
        })
