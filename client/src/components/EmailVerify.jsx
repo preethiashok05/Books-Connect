@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import success from "../utils/pics/success.webp";
 import styles from './styles/verify.css'
-import { host } from "../utils/apiRoutes";
+import { clienthosthost } from "../utils/apiRoutes";
 
 export default function EmailVerify() {
     const [validUrl, setValidUrl] = useState(false);
